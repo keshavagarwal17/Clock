@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    background-color: black;
+    background-color: #06090f;
 }
 .container{
     display: flex;
@@ -33,10 +33,10 @@ body{
 
 .spin{
     position: absolute;
-    border: 1px solid;
+    border: 1.5px solid;
     height: 50px;
     width: 50px;
-    border-color: #f88f01 #f1f1f1 #f1f1f1;
+    border-color: yellow #f1f1f1 #f1f1f1;
     border-radius: 100%;
     animation: spinner 1s linear  infinite ;
 }
@@ -56,4 +56,8 @@ body{
     to{
         transform: scale(1);
     }
+}
+
+nav{
+    color:white;
 }
