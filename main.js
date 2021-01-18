@@ -1,3 +1,15 @@
+var centiSecond = 0;
+var second = 0;
+var minute = 0;
+var stop_watch_hour=0;
+var menu_item = document.getElementsByClassName('menu-item');
+var stopWatchRefereshId;
+var stop_stopwatch_btn = document.getElementsByClassName("Stop-btn")[0];
+var resume_stopwatch_btn = document.getElementsByClassName("Resume-btn")[0];
+var reset_stopwatch_btn = document.getElementsByClassName("Reset-btn")[0];
+var start_stopwatch_btn = document.getElementsByClassName("stop-watch-btn")[0];
+var container = document.getElementsByClassName("container");
+
 function start(){
     changeData();
     setInterval(changeData, 1000);
@@ -18,4 +30,72 @@ function getTwoDigit(a){
     return a<10?`0${a}`:a;
 }
 
+function startStopWatch(){
+    stopWatchRefereshId = setInterval(updateStopWatch,10);
+}
+
+start_stopwatch_btn.addEventListener("click",()=>{
+    start_stopwatch_btn.style.display = "none";
+    document.getElementsByClassName("after-start-stopwatch-btn")[0].style.display="block";
+    startStopWatch();
+})
+
+stop_stopwatch_btn.addEventListener("click",()=>{
+    resume_stopwatch_btn.style.display="inline";
+    stop_stopwatch_btn.style.display="none";
+    clearInterval(stopWatchRefereshId);
+})
+
+resume_stopwatch_btn.addEventListener("click",()=>{
+    resume_stopwatch_btn.style.display="none";
+    stop_stopwatch_btn.style.display="inline";
+    startStopWatch();
+})
+
+reset_stopwatch_btn.addEventListener("click",()=>{
+    clearInterval(stopWatchRefereshId);
+    centiSecond = 0;
+    second = 0;
+    minute = 0;
+    stop_watch_hour=0;
+    resume_stopwatch_btn.style.display="none";
+    stop_stopwatch_btn.style.display="inline";
+    start_stopwatch_btn.style.display = "block";
+    document.getElementsByClassName("after-start-stopwatch-btn")[0].style.display="none";
+    document.getElementsByClassName("stopWatchTime")[0].innerHTML="00 : 00 : 00 : 00";
+})
+
+function updateStopWatch(){
+    centiSecond++;
+    if(centiSecond==100){
+        second++;
+        centiSecond=0;
+    }
+    if(second==60){
+        minute++;
+        second=0;
+    }
+    if(minute==60){
+        stop_watch_hour++;
+        minute=0;
+    }
+    document.getElementsByClassName("stopWatchTime")[0].innerHTML= `${getTwoDigit(stop_watch_hour)} : ${getTwoDigit(minute)} : ${getTwoDigit(second)} : ${getTwoDigit(centiSecond)}`;
+}
+
+
+
+for(let i=0;i<menu_item.length;i++)
+{
+    menu_item[i].addEventListener('click',()=>{
+        for(let j =0;j<menu_item.length;j++){
+            menu_item[j].className = "menu-item";
+            container[j].style.display="none";
+        }
+        menu_item[i].className = "menu-item active";
+        container[i].style.display="flex";
+    })
+}
+
+menu_item[0].className+=" active";
+container[0].style.display="flex";
 start();

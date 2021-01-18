@@ -5,12 +5,34 @@
 body{
     background-color: #06090f;
 }
+nav{
+    background-color: #161b22;
+}
+nav ul{
+    display: flex;
+    list-style-type: none;
+    font-size: 20px;
+    justify-content: flex-end;
+}
+.active{
+    color: #498ad3;
+}
+
+nav li:hover{
+    color: #89befc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+li{
+    padding: 15px;
+}
 .container{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100%;
+    height: 80%;
 }
 .time{
     margin-bottom: 30px;
@@ -60,4 +82,42 @@ body{
 
 nav{
     color:white;
+}
+
+.stopWatchTime{
+    color: white;
+    font-size: 40px;
+    letter-spacing: 3px;
+}
+
+button{
+    margin-top: 100px;
+    color: white;
+    padding: 7px 20px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.stop-watch-btn{
+    background-color: #0e55a7;
+}
+
+.Resume-btn{
+    background-color: #0e55a7;
+    display: none;
+}
+
+.after-start-stopwatch-btn{
+    display: none;
+}
+
+.Stop-btn{
+    background-color: #0e55a7;
+}
+
+.Reset-btn{
+    background-color :rgb(133, 37, 37);
 }
