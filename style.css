@@ -8,9 +8,6 @@ body{
 nav{
     background-color: #161b22;
 }
-div{
-    outline-color: red;
-}
 nav ul{
     display: flex;
     list-style-type: none;

@@ -106,9 +106,9 @@ start();
 
 let tem;
 sec_timer.addEventListener("keyup",(e)=>{
-    tem = parseInt(sec_timer.value);
+    tem = sec_timer.value==""?0:parseInt(sec_timer.value);
     if(tem>=60){
-        sec_timer.value= e.key;
+        sec_timer.value= "59";
     }else{
         sec_timer.value = tem;
     }
@@ -127,7 +127,7 @@ sec_timer.addEventListener("focusout",(e)=>{
 })
 
 min_timer.addEventListener("keyup",(e)=>{
-    tem = parseInt(min_timer.value);
+    tem = min_timer.value==""?0:parseInt(min_timer.value);
     if(tem>=60){
         min_timer.value = "59";
     }else{
@@ -147,7 +147,7 @@ min_timer.addEventListener("focusout",(e)=>{
 })
 
 hour_timer.addEventListener("keyup",(e)=>{
-    tem = parseInt(hour_timer.value);
+    tem = hour_timer.value==""?0:parseInt(hour_timer.value);
     if(tem>=100){
         hour_timer.value = "99";
     }else{
