@@ -100,8 +100,8 @@ for(let i=0;i<menu_item.length;i++)
     })
 }
 
-menu_item[2].className+=" active";
-container[2].style.display="flex";
+menu_item[0].className+=" active";
+container[0].style.display="flex";
 start();
 
 
