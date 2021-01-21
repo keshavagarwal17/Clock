@@ -50,17 +50,17 @@
 
     <div class="container">
         <div class="timer">
-            <div class="hour-timer">
+            <div>
                 <div class="hint">Hours</div>
-                <input maxlength="2" class="inp-timer" value="00" min="0" type="number">
+                <div class="inp-timer" tabindex="1" id="hour-timer">00</div>
             </div>
-            <div class="minute-timer">
+            <div>
                 <div class="hint">Minutes</div>
-                <input maxlength="2" class="inp-timer" value="00" max="59" min="0" type="number">
+                <div class="inp-timer" tabindex="2" id="minute-timer">00</div>
             </div>
-            <div class="second-timer">
+            <div>
                 <div class="hint">Seconds</div>
-                <input maxlength="2" class="inp-timer" value="00" max="59" min="0" type="number">
+                <div class="inp-timer" tabindex="3" id="second-timer">00</div>
             </div>
         </div>
         <button type="button" class="start-btn" disabled>Start</button>
