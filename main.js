@@ -179,6 +179,7 @@ min_timer.addEventListener("focusout",(e)=>{
 
 hour_timer.addEventListener("keyup",(e)=>{
     selectText("hour-timer");
+    prompt();
     if((e.keyCode>=48 && e.keyCode<58)|| (e.keyCode>=96 && e.keyCode<106)){
         previous_val_of_hour = previous_val_of_hour*10+parseInt(e.key);
         if(previous_val_of_hour<100){
