@@ -194,6 +194,7 @@ document.getElementsByClassName("Cancel-timer")[0].addEventListener("click",()=>
     min_timer.value="00";
     hour_timer.value="00";
     start_timer_btn.disabled = true;
+    document.getElementById("music").pause();
 })
 
 start_timer_btn.addEventListener("click",()=>{
