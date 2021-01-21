@@ -13,6 +13,7 @@ var min_timer= document.getElementsByClassName("inp-timer")[1];
 var hour_timer= document.getElementsByClassName("inp-timer")[0]; 
 var container = document.getElementsByClassName("container");
 var start_timer_btn = document.getElementsByClassName("start-btn")[0];
+var second_timer_val,minute_timer_val,hour_timer_val,timerReferenceId;
 
 function start(){
     changeData();
@@ -31,7 +32,10 @@ function changeData(){
 }
 
 function getTwoDigit(a){
-    return a<10?`0${a}`:a;
+    if(typeof(a)=="string"){
+        a = parseInt(a);
+    }
+    return (a<10)?`0${a}`:a;
 }
 
 function startStopWatch(){
@@ -165,3 +169,63 @@ hour_timer.addEventListener("focusout",(e)=>{
     }
     hour_timer.value = getTwoDigit(parseInt(hour_timer.value))
 })
+
+document.getElementsByClassName("pause-timer")[0].addEventListener("click",()=>{
+    clearInterval(timerReferenceId);
+    document.getElementsByClassName("pause-timer")[0].style.display="none"
+    document.getElementsByClassName("Resume-timer")[0].style.display="inline"
+})
+
+document.getElementsByClassName("Resume-timer")[0].addEventListener("click",()=>{
+    timerReferenceId = setInterval(updateTimer,1000);
+    document.getElementsByClassName("pause-timer")[0].style.display="inline"
+    document.getElementsByClassName("Resume-timer")[0].style.display="none"
+})
+
+document.getElementsByClassName("Cancel-timer")[0].addEventListener("click",()=>{
+    document.getElementsByClassName("pause-timer")[0].style.display="inline"
+    document.getElementsByClassName("Resume-timer")[0].style.display="none"
+    document.getElementsByClassName("timer")[0].style.display="flex";
+    start_timer_btn.style.display="inline";
+    document.getElementsByClassName("count-down")[0].style.display = "none";
+    document.getElementsByClassName("count-down-spinner")[0].style.display = "none";
+    document.getElementsByClassName("extra-timer-btn")[0].style.display = "none";
+    sec_timer.value="00";
+    min_timer.value="00";
+    hour_timer.value="00";
+    start_timer_btn.disabled = true;
+})
+
+start_timer_btn.addEventListener("click",()=>{
+    document.getElementsByClassName("timer")[0].style.display="none";
+    start_timer_btn.style.display="none";
+    document.getElementsByClassName("count-down")[0].style.display = "block";
+    document.getElementsByClassName("count-down-spinner")[0].style.display = "block";
+    document.getElementsByClassName("extra-timer-btn")[0].style.display = "block";
+    second_timer_val = sec_timer.value;
+    minute_timer_val = min_timer.value;
+    hour_timer_val = hour_timer.value;
+    document.getElementsByClassName("count-down")[0].innerHTML = `${hour_timer_val} : ${minute_timer_val} : ${second_timer_val}`;
+    timerReferenceId = setInterval(updateTimer,1000);
+})
+
+function updateTimer(){
+    if(second_timer_val==0){
+        if(minute_timer_val>0){
+            minute_timer_val--;
+            second_timer_val=59;
+        }else{
+            if(hour_timer_val>0){
+                hour_timer_val--;
+                second_timer_val=59;
+                minute_timer_val = 59;
+            }else{
+                clearInterval(timerReferenceId);
+                document.getElementById("music").play();
+            }
+        }
+    }else{
+        second_timer_val--;
+    }
+    document.getElementsByClassName("count-down")[0].innerHTML = `${getTwoDigit(hour_timer_val)} : ${getTwoDigit(minute_timer_val)} : ${getTwoDigit(second_timer_val)}`;
+}

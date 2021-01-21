@@ -6,6 +6,10 @@
     <title>Watch</title>
 </head>
 <body>
+    <audio controls id="music" style="display: none;">
+        <source src="timer.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <nav>
         <ul>
             <li class="menu-item">Time</li>
@@ -38,9 +42,7 @@
             <button class="Resume-btn">
                 Resume
             </button>
-            <span style="padding-left:100px ;">
-
-            </span>
+            <span style="padding-left:100px ;"></span>
             <button class="Reset-btn">
                 Reset
             </button>
@@ -64,6 +66,22 @@
             </div>
         </div>
         <button type="button" class="start-btn" disabled>Start</button>
+        <div class="container2">
+            <div class="count-down">00 : 00 : 00</div>
+            <div class="count-down-spinner"></div>
+        </div>
+        <div class="extra-timer-btn">
+            <button class="pause-timer">
+                Pause
+            </button>
+            <button class="Resume-timer">
+                Resume
+            </button>
+            <span style="padding-left:100px ;"></span>
+            <button class="Cancel-timer">
+                Cancel
+            </button>
+        </div>
     </div>
 </body>
 <script src="./main.js"></script>

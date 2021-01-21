@@ -144,3 +144,41 @@ button:disabled{
 .timer>div{
     padding: 20px;
 }
+.Resume-timer{
+    background-color: #0e55a7 ;
+    display: none;
+}
+.count-down{
+    display: none;
+    font-size: 30px;
+    letter-spacing: 3px;
+}
+
+@keyframes timerAnimation{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+.count-down-spinner{
+    position: absolute;
+    display: none;
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+    border: 5px solid;
+    border-color: #E3F34D #5d4df3  #5d4df3;
+    animation:timerAnimation 2s linear infinite ;
+}
+.extra-timer-btn{
+    display:none;
+    padding-top: 50px;
+}
+.pause-timer{
+    background-color: rgb(121, 9, 9);
+}
+.Cancel-timer{
+    background-color: #323232;
+}
