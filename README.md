@@ -1,10 +1,8 @@
 # Clock
-a small responsive web which have the following features.<br>
-(i) Current Time<br>
+A small responsive web which have the following features.<br>
 
-(ii) Stopwatch<br>
-
-(iii) Timer<br>
-
+1. Current Time<br>
+2. Stopwatch<br>
+3. Timer<br>
 
 ![Visitor count](https://visitor-badge.laobi.icu/badge?page_id=The-Keshav-Agarwal.Clock)
