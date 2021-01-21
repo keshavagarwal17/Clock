@@ -117,34 +117,28 @@ function selectText(containerid) {
     }
 }
 
-sec_timer.addEventListener("click",()=>{
-    selectText("second-timer");
-    sec_timer.focus();
-})
+// sec_timer.addEventListener("click",()=>{
+//     selectText("second-timer");
+//     sec_timer.focus();
+// })
 
-min_timer.addEventListener("click",()=>{
-    selectText("minute-timer");
-})
+// min_timer.addEventListener("click",()=>{
+//     selectText("minute-timer");
+// })
 
-hour_timer.addEventListener("click",()=>{
-    selectText("hour-timer");
-})
-
-let previous_val_of_second=0;
-let previous_val_of_minute=0;
-let previous_val_of_hour=0;
-
+// hour_timer.addEventListener("click",()=>{
+//     selectText("hour-timer");
+// })
+let tem;
 sec_timer.addEventListener("keyup",(e)=>{
-    selectText("second-timer");
     if((e.keyCode>=48 && e.keyCode<58)|| (e.keyCode>=96 && e.keyCode<106)){
-        previous_val_of_second = previous_val_of_second*10+parseInt(e.key);
-        if(previous_val_of_second<60){
-            sec_timer.innerHTML = previous_val_of_second;
+        tem = parseInt(sec_timer.value);
+        if(tem>=60){
+            sec_timer.value= e.key;
         }else{
-            sec_timer.innerHTML = e.key;
-            previous_val_of_second = e.key;
+            sec_timer.value = tem;
         }
-        if(parseInt(sec_timer.textContent)==0 && parseInt(min_timer.textContent)==0 && parseInt(hour_timer.textContent)==0){
+        if(parseInt(sec_timer.value)==0 && parseInt(min_timer.value)==0 && parseInt(hour_timer.value)==0){
             start_timer_btn.disabled = true;
         }else{
             start_timer_btn.disabled = false;
@@ -152,21 +146,18 @@ sec_timer.addEventListener("keyup",(e)=>{
     }
 })
 sec_timer.addEventListener("focusout",(e)=>{
-    sec_timer.innerHTML = getTwoDigit(parseInt(sec_timer.textContent))
-    previous_val_of_second = 0;
+    sec_timer.value = getTwoDigit(parseInt(sec_timer.value))
 })
 
 min_timer.addEventListener("keyup",(e)=>{
-    selectText("minute-timer");
     if((e.keyCode>=48 && e.keyCode<58)|| (e.keyCode>=96 && e.keyCode<106)){
-        previous_val_of_minute = previous_val_of_minute*10+parseInt(e.key);
-        if(previous_val_of_minute<60){
-            min_timer.innerHTML = previous_val_of_minute;
+        tem = parseInt(min_timer.value);
+        if(tem>=60){
+            min_timer.value = e.key;
         }else{
-            min_timer.innerHTML = e.key;
-            previous_val_of_minute = e.key;
+            min_timer.value = tem;
         }
-        if(parseInt(sec_timer.textContent)==0 && parseInt(min_timer.textContent)==0 && parseInt(hour_timer.textContent)==0){
+        if(parseInt(sec_timer.value)==0 && parseInt(min_timer.value)==0 && parseInt(hour_timer.value)==0){
             start_timer_btn.disabled = true;
         }else{
             start_timer_btn.disabled = false;
@@ -174,21 +165,18 @@ min_timer.addEventListener("keyup",(e)=>{
     }
 })
 min_timer.addEventListener("focusout",(e)=>{
-    min_timer.innerHTML = getTwoDigit(parseInt(min_timer.textContent))
-    previous_val_of_minute = 0;
+    min_timer.value = getTwoDigit(parseInt(min_timer.value))
 })
 
 hour_timer.addEventListener("keyup",(e)=>{
-    selectText("hour-timer");
     if((e.keyCode>=48 && e.keyCode<58)|| (e.keyCode>=96 && e.keyCode<106)){
-        previous_val_of_hour = previous_val_of_hour*10+parseInt(e.key);
-        if(previous_val_of_hour<100){
-            hour_timer.innerHTML = previous_val_of_hour;
+        tem = parseInt(hour_timer.value);
+        if(tem>=100){
+            hour_timer.value = e.key;
         }else{
-            hour_timer.innerHTML = e.key;
-            previous_val_of_hour = e.key;
+            hour_timer.value = tem;
         }
-        if(parseInt(sec_timer.textContent)==0 && parseInt(min_timer.textContent)==0 && parseInt(hour_timer.textContent)==0){
+        if(parseInt(sec_timer.value)==0 && parseInt(min_timer.value)==0 && parseInt(hour_timer.value)==0){
             start_timer_btn.disabled = true;
         }else{
             start_timer_btn.disabled = false;
@@ -196,6 +184,5 @@ hour_timer.addEventListener("keyup",(e)=>{
     }
 })
 hour_timer.addEventListener("focusout",(e)=>{
-    hour_timer.innerHTML = getTwoDigit(parseInt(hour_timer.textContent))
-    previous_val_of_hour = 0;
+    hour_timer.value = getTwoDigit(parseInt(hour_timer.value))
 })

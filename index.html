@@ -52,15 +52,15 @@
         <div class="timer">
             <div>
                 <div class="hint">Hours</div>
-                <div class="inp-timer" tabindex="1" id="hour-timer">00</div>
+                <input type="number" min="0" value="00" class="inp-timer" tabindex="1" id="hour-timer">
             </div>
             <div>
                 <div class="hint">Minutes</div>
-                <div class="inp-timer" tabindex="2" id="minute-timer">00</div>
+                <input type="number" min="0" max="59" value="00" class="inp-timer" tabindex="2" id="minute-timer">
             </div>
             <div>
                 <div class="hint">Seconds</div>
-                <div class="inp-timer" tabindex="3" id="second-timer">00</div>
+                <input type="number" min="0" max="59" value="00" class="inp-timer" tabindex="3" id="second-timer">
             </div>
         </div>
         <button type="button" class="start-btn" disabled>Start</button>
