@@ -100,8 +100,8 @@ for(let i=0;i<menu_item.length;i++)
     })
 }
 
-menu_item[2].className+=" active";
-container[2].style.display="flex";
+menu_item[0].className+=" active";
+container[0].style.display="flex";
 start();
 
 function selectText(containerid) {
@@ -119,6 +119,7 @@ function selectText(containerid) {
 
 sec_timer.addEventListener("click",()=>{
     selectText("second-timer");
+    sec_timer.focus();
 })
 
 min_timer.addEventListener("click",()=>{
@@ -179,7 +180,6 @@ min_timer.addEventListener("focusout",(e)=>{
 
 hour_timer.addEventListener("keyup",(e)=>{
     selectText("hour-timer");
-    prompt();
     if((e.keyCode>=48 && e.keyCode<58)|| (e.keyCode>=96 && e.keyCode<106)){
         previous_val_of_hour = previous_val_of_hour*10+parseInt(e.key);
         if(previous_val_of_hour<100){
