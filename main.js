@@ -104,85 +104,64 @@ menu_item[0].className+=" active";
 container[0].style.display="flex";
 start();
 
-function selectText(containerid) {
-    if (document.selection) { // IE
-        var range = document.body.createTextRange();
-        range.moveToElementText(document.getElementById(containerid));
-        range.select();
-    } else if (window.getSelection) {
-        var range = document.createRange();
-        range.selectNode(document.getElementById(containerid));
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-    }
-}
-
-// sec_timer.addEventListener("click",()=>{
-//     selectText("second-timer");
-//     sec_timer.focus();
-// })
-
-// min_timer.addEventListener("click",()=>{
-//     selectText("minute-timer");
-// })
-
-// hour_timer.addEventListener("click",()=>{
-//     selectText("hour-timer");
-// })
 let tem;
 sec_timer.addEventListener("keyup",(e)=>{
-    if((e.keyCode>=48 && e.keyCode<58)|| (e.keyCode>=96 && e.keyCode<106)){
-        tem = parseInt(sec_timer.value);
-        if(tem>=60){
-            sec_timer.value= e.key;
-        }else{
-            sec_timer.value = tem;
-        }
-        if(parseInt(sec_timer.value)==0 && parseInt(min_timer.value)==0 && parseInt(hour_timer.value)==0){
-            start_timer_btn.disabled = true;
-        }else{
-            start_timer_btn.disabled = false;
-        }
+    tem = parseInt(sec_timer.value);
+    if(tem>=60){
+        sec_timer.value= e.key;
+    }else{
+        sec_timer.value = tem;
+    }
+    if(parseInt(sec_timer.value)==0 && parseInt(min_timer.value)==0 && parseInt(hour_timer.value)==0){
+        start_timer_btn.disabled = true;
+    }else{
+        start_timer_btn.disabled = false;
     }
 })
+
 sec_timer.addEventListener("focusout",(e)=>{
+    if(sec_timer.value==""){
+        sec_timer.value="0"
+    }
     sec_timer.value = getTwoDigit(parseInt(sec_timer.value))
 })
 
 min_timer.addEventListener("keyup",(e)=>{
-    if((e.keyCode>=48 && e.keyCode<58)|| (e.keyCode>=96 && e.keyCode<106)){
-        tem = parseInt(min_timer.value);
-        if(tem>=60){
-            min_timer.value = e.key;
-        }else{
-            min_timer.value = tem;
-        }
-        if(parseInt(sec_timer.value)==0 && parseInt(min_timer.value)==0 && parseInt(hour_timer.value)==0){
-            start_timer_btn.disabled = true;
-        }else{
-            start_timer_btn.disabled = false;
-        }
+    tem = parseInt(min_timer.value);
+    if(tem>=60){
+        min_timer.value = "59";
+    }else{
+        min_timer.value = tem;
+    }
+    if(parseInt(sec_timer.value)==0 && parseInt(min_timer.value)==0 && parseInt(hour_timer.value)==0){
+        start_timer_btn.disabled = true;
+    }else{
+        start_timer_btn.disabled = false;
     }
 })
 min_timer.addEventListener("focusout",(e)=>{
+    if(min_timer.value==""){
+        min_timer.value="0";
+    }
     min_timer.value = getTwoDigit(parseInt(min_timer.value))
 })
 
 hour_timer.addEventListener("keyup",(e)=>{
-    if((e.keyCode>=48 && e.keyCode<58)|| (e.keyCode>=96 && e.keyCode<106)){
-        tem = parseInt(hour_timer.value);
-        if(tem>=100){
-            hour_timer.value = e.key;
-        }else{
-            hour_timer.value = tem;
-        }
-        if(parseInt(sec_timer.value)==0 && parseInt(min_timer.value)==0 && parseInt(hour_timer.value)==0){
-            start_timer_btn.disabled = true;
-        }else{
-            start_timer_btn.disabled = false;
-        }
+    tem = parseInt(hour_timer.value);
+    if(tem>=100){
+        hour_timer.value = "99";
+    }else{
+        hour_timer.value = tem;
+    }
+    if(parseInt(sec_timer.value)==0 && parseInt(min_timer.value)==0 && parseInt(hour_timer.value)==0){
+        start_timer_btn.disabled = true;
+    }else{
+        start_timer_btn.disabled = false;
     }
 })
 hour_timer.addEventListener("focusout",(e)=>{
+    if(hour_timer.value==""){
+        hour_timer.value="0";
+    }
     hour_timer.value = getTwoDigit(parseInt(hour_timer.value))
 })
