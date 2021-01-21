@@ -10,7 +10,7 @@
         <ul>
             <li class="menu-item">Time</li>
             <li class="menu-item">Stopwatch</li>
-            <!-- <li class="menu-item">Timer</li> -->
+            <li class="menu-item">Timer</li>
         </ul>
     </nav>
     <div class="container">
@@ -49,7 +49,21 @@
 
 
     <div class="container">
-        coming soon...
+        <div class="timer">
+            <div class="hour-timer">
+                <div class="hint">Hours</div>
+                <input maxlength="2" class="inp-timer" value="00" min="0" type="number">
+            </div>
+            <div class="minute-timer">
+                <div class="hint">Minutes</div>
+                <input maxlength="2" class="inp-timer" value="00" max="59" min="0" type="number">
+            </div>
+            <div class="second-timer">
+                <div class="hint">Seconds</div>
+                <input maxlength="2" class="inp-timer" value="00" max="59" min="0" type="number">
+            </div>
+        </div>
+        <button type="button" class="start-btn" disabled>Start</button>
     </div>
 </body>
 <script src="./main.js"></script>

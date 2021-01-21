@@ -33,10 +33,10 @@ li{
     justify-content: center;
     flex-direction: column;
     height: 80%;
+    color: white;
 }
 .time{
     margin-bottom: 30px;
-    color: white;
     font-size: 55px;
 }
 .container2{
@@ -47,7 +47,6 @@ li{
 }
 
 .sec2{
-    color: white;
     padding: 10px;
     font-size: 30px;
     animation: pulse 1s infinite  ;
@@ -85,14 +84,13 @@ nav{
 }
 
 .stopWatchTime{
-    color: white;
     font-size: 40px;
     letter-spacing: 3px;
 }
 
 button{
+    color:white;
     margin-top: 100px;
-    color: white;
     padding: 7px 20px;
     border-radius: 50px;
     outline: none;
@@ -101,8 +99,11 @@ button{
     font-size: 20px;
 }
 
-.stop-watch-btn{
+.stop-watch-btn,.start-btn{
     background-color: #0e55a7;
+}
+button:disabled{
+  opacity: .3;
 }
 
 .Resume-btn{
@@ -120,4 +121,26 @@ button{
 
 .Reset-btn{
     background-color :rgb(133, 37, 37);
+}
+
+.inp-timer{
+    padding: 3px;
+    font-size: 35px;
+    width: 70px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    letter-spacing: 3px;
+    color: white;
+}
+.timer{
+    display: flex;
+}
+.hint{
+    opacity: .5;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.timer>div{
+    padding: 20px;
 }

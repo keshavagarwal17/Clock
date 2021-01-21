@@ -8,7 +8,11 @@ var stop_stopwatch_btn = document.getElementsByClassName("Stop-btn")[0];
 var resume_stopwatch_btn = document.getElementsByClassName("Resume-btn")[0];
 var reset_stopwatch_btn = document.getElementsByClassName("Reset-btn")[0];
 var start_stopwatch_btn = document.getElementsByClassName("stop-watch-btn")[0];
+var sec_timer= document.getElementsByClassName("inp-timer")[2]; 
+var min_timer= document.getElementsByClassName("inp-timer")[1]; 
+var hour_timer= document.getElementsByClassName("inp-timer")[0]; 
 var container = document.getElementsByClassName("container");
+var start_timer_btn = document.getElementsByClassName("start-btn")[0];
 
 function start(){
     changeData();
@@ -23,7 +27,7 @@ function changeData(){
     document.getElementsByClassName("min")[0].innerHTML=getTwoDigit(mins);
     var hours = today.getHours();
     document.getElementsByClassName("hour")[0].innerHTML=hours>12?getTwoDigit(hours-12):hours==0?"12":getTwoDigit(hours);
-    document.getElementsByClassName("ampm")[0].innerHTML=today.getHours()>12?"Pm":"Am";
+    document.getElementsByClassName("ampm")[0].innerHTML=today.getHours()>=12?"Pm":"Am";
 }
 
 function getTwoDigit(a){
@@ -96,6 +100,34 @@ for(let i=0;i<menu_item.length;i++)
     })
 }
 
-menu_item[0].className+=" active";
-container[0].style.display="flex";
+menu_item[2].className+=" active";
+container[2].style.display="flex";
 start();
+
+
+document.addEventListener("keyup",(e)=>{
+    if(sec_timer.value>=60 || sec_timer.value.length>2){
+        sec_timer.value = getTwoDigit(e.key)
+    }
+    if(min_timer.value>=60 || min_timer.value.length>2){
+        min_timer.value = getTwoDigit(e.key)
+    }
+    if(hour_timer.value.length>2){
+        hour_timer.value = getTwoDigit(e.key)
+    }
+    if(sec_timer.value==""){
+        sec_timer.value="00"
+    }
+    if(min_timer.value==""){
+        min_timer.value="00"
+    }
+    if(hour_timer.value==""){
+        hour_timer.value="00"
+    }
+    if(min_timer.value!="00" || hour_timer.value!="00" || sec_timer.value!="00"){
+        start_timer_btn.disabled = false;
+    }
+    else{
+        start_timer_btn.disabled = true;
+    }
+})
