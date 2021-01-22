@@ -182,7 +182,7 @@ document.getElementsByClassName("Resume-timer")[0].addEventListener("click",()=>
     document.getElementsByClassName("Resume-timer")[0].style.display="none"
 })
 
-document.getElementsByClassName("Cancel-timer")[0].addEventListener("click",()=>{
+function CancelingTimer(){
     document.getElementsByClassName("pause-timer")[0].style.display="inline"
     document.getElementsByClassName("Resume-timer")[0].style.display="none"
     document.getElementsByClassName("timer")[0].style.display="flex";
@@ -194,7 +194,12 @@ document.getElementsByClassName("Cancel-timer")[0].addEventListener("click",()=>
     min_timer.value="00";
     hour_timer.value="00";
     start_timer_btn.disabled = true;
+    clearInterval(timerReferenceId);
     document.getElementById("music").pause();
+}
+
+document.getElementsByClassName("Cancel-timer")[0].addEventListener("click",()=>{
+    CancelingTimer();
 })
 
 start_timer_btn.addEventListener("click",()=>{
@@ -223,6 +228,11 @@ function updateTimer(){
             }else{
                 clearInterval(timerReferenceId);
                 document.getElementById("music").play();
+                setTimeout(()=>{
+                    if(document.getElementsByClassName("timer")[0].style.display=="none"){
+                        CancelingTimer();
+                    }
+                },10000);
             }
         }
     }else{
